@@ -1,4 +1,4 @@
-package com.trading_app
+package com.rn_trading_app
 
 import android.app.Application
 import com.facebook.react.PackageList

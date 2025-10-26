@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "trading_app.app"
-               BlueprintName = "trading_app"
-               ReferencedContainer = "container:trading_app.xcodeproj">
+               BuildableName = "rn_trading_app.app"
+               BlueprintName = "rn_trading_app"
+               ReferencedContainer = "container:rn_trading_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "trading_appTests.xctest"
-               BlueprintName = "trading_appTests"
-               ReferencedContainer = "container:trading_app.xcodeproj">
+               BuildableName = "rn_trading_appTests.xctest"
+               BlueprintName = "rn_trading_appTests"
+               ReferencedContainer = "container:rn_trading_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "trading_app.app"
-            BlueprintName = "trading_app"
-            ReferencedContainer = "container:trading_app.xcodeproj">
+            BuildableName = "rn_trading_app.app"
+            BlueprintName = "rn_trading_app"
+            ReferencedContainer = "container:rn_trading_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "trading_app.app"
-            BlueprintName = "trading_app"
-            ReferencedContainer = "container:trading_app.xcodeproj">
+            BuildableName = "rn_trading_app.app"
+            BlueprintName = "rn_trading_app"
+            ReferencedContainer = "container:rn_trading_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
