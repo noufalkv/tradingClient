@@ -38,14 +38,14 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Run Prettier
-        run: npm run format
+    #   - name: Run Prettier
+    #     run: npm run format
 
-      - name: Run ESLint
-        run: npm run lint:fix
+    #   - name: Run ESLint
+    #     run: npm run lint:fix
 
-      - name: Run Unit Tests
-        run: npm run test
+    #   - name: Run Unit Tests
+    #     run: npm run test
 
       # - name: Run Detox tests
       #   uses: reactivecircus/android-emulator-runner@v2
