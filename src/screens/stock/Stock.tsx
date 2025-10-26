@@ -66,7 +66,7 @@ const Stock = () => {
   };
 
   const refreshHandler = async () => {
-    setRefreshing(true)
+    setRefreshing(true);
     await fetchStocks();
   };
 

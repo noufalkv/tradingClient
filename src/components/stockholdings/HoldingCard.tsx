@@ -15,7 +15,6 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
   const { colors } = useTheme();
   const socketService = useWS();
 
-
   const [summary, setSummary] = useState({
     totalInvested: 0,
     totalCurrentValue: 0,
@@ -26,10 +25,7 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
     dayReturnsPercentageChange: '',
   });
 
- 
-
   useEffect(() => {
-    
     if (socketService && data.length > 0) {
       const symbols = data.map(holding => holding.stock.symbol);
       socketService.emit('subscribeToMultipleStocks', symbols as any);
@@ -46,7 +42,7 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
     }
   }, [socketService, data]);
 
-   const updateSummary = useCallback(
+  const updateSummary = useCallback(
     (stocksData: any) => {
       let totalInvested = 0;
       let totalCurrentValue = 0;
@@ -137,7 +133,7 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
         </View>
       </View>
 
-       <View style={styles.flexRowCenter2}>
+      <View style={styles.flexRowCenter2}>
         <View>
           <CustomText variant="h9" fontFamily={FONTS.Regular}>
             Invested Amount
@@ -145,7 +141,7 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
           <CustomText variant="h8" style={styles.investedAmountText}>
             {summary.totalInvested
               ? formatPaisaWithCommas(summary.totalInvested)
-              : "-"}
+              : '-'}
           </CustomText>
         </View>
 
@@ -168,11 +164,10 @@ const HoldingCard: FC<HoldingProps> = React.memo(({ data }) => {
               ? `${getSignPaisa(summary.oneDayReturn).paisa} (${
                   summary.dayReturnsPercentageChange
                 }%)`
-              : "-"}
+              : '-'}
           </CustomText>
         </View>
       </View>
-
     </View>
   );
 });

@@ -106,7 +106,7 @@ export const signInWithGoogle = () => async (dispatch: any) => {
     });
     await handleSignInSuccess(res, dispatch);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     handleSignInError(error);
   }
 };

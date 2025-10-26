@@ -23,11 +23,8 @@ const MainHeader = () => {
       </View>
 
       <Animated.Image
-        source={require("../../assets/images/bull.png")}
-        style={[
-          styles.middleImg,
-          { transform: [{ translateY: fallAnim }] },
-        ]}
+        source={require('../../assets/images/bull.png')}
+        style={[styles.middleImg, { transform: [{ translateY: fallAnim }] }]}
       />
 
       <View style={styles.flexRowCenter}>

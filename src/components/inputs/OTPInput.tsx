@@ -5,7 +5,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '../../constants/Fonts';
 import { Colors } from '../../constants/Colors';
 import CustomText from '../global/CustomText';
-import Icon2 from "react-native-vector-icons/Ionicons";
+import Icon2 from 'react-native-vector-icons/Ionicons';
 
 interface OTPInputProps {
   otpValues: any;

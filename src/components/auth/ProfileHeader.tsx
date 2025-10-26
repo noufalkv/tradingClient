@@ -1,10 +1,10 @@
-import { View, StyleSheet } from "react-native";
-import React, { FC } from "react";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
-import { goBack } from "../../utils/NavigationUtil";
-import { useTheme } from "@react-navigation/native";
-import { RFValue } from "react-native-responsive-fontsize";
+import { View, StyleSheet } from 'react-native';
+import React, { FC } from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import { goBack } from '../../utils/NavigationUtil';
+import { useTheme } from '@react-navigation/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const ProfileHeader: FC = () => {
   const { colors } = useTheme();
@@ -40,14 +40,14 @@ const ProfileHeader: FC = () => {
 
 const styles = StyleSheet.create({
   flexRowBetween: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginHorizontal: 0
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 0,
   },
   flexRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 30,
   },
 });

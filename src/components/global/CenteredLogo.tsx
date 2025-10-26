@@ -1,7 +1,7 @@
-import { View, Image, StyleSheet } from "react-native";
-import React from "react";
-import Logo from "../../assets/images/logo_text.png";
-import { RFValue } from "react-native-responsive-fontsize";
+import { View, Image, StyleSheet } from 'react-native';
+import React from 'react';
+import Logo from '../../assets/images/logo_text.png';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const CenteredLogo = () => {
   return (
@@ -15,20 +15,20 @@ const CenteredLogo = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 5,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   imgContainer: {
     width: RFValue(140),
     height: RFValue(40),
   },
   img: {
-    height: "100%",
-    width: "100%",
-    resizeMode: "contain",
+    height: '100%',
+    width: '100%',
+    resizeMode: 'contain',
   },
 });
 
