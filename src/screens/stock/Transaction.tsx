@@ -227,7 +227,6 @@ const Transaction = () => {
                 cursorColor={colors.primary}
               />
             </View>
-            
           </ScrollView>
         </View>
 

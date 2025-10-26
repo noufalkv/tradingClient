@@ -1,5 +1,12 @@
 import { JSX, useState } from 'react';
-import { Platform, StyleSheet, TextInput, TextStyle,Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  TextInput,
+  TextStyle,
+  Text,
+  View,
+} from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '../../constants/Fonts';
 import { Colors } from '../../constants/Colors';

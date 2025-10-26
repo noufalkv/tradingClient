@@ -25,7 +25,6 @@ const ResetPin = () => {
   const [otpVerification, setOtpVerification] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-
   const handlePressNumber = (number: number | string) => {
     if (focusedIndex < otpValues.length) {
       const newOtpValues = [...otpValues];
