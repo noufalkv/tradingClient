@@ -16,7 +16,7 @@
 	<key>GIDClientID</key>
 	<string>YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com</string>
 	<key>CFBundleDisplayName</key>
-	<string>Trading App</string>
+	<string>rn_trading_app</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -43,7 +43,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>
