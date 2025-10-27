@@ -1,5 +1,5 @@
 {
-  "name": "rn_rn_trading_app",
+  "name": "rn_trading_app",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,6 +11,8 @@
     "format:check": "prettier --check .",
     "start": "react-native start",
     "test": "jest",
+    "build:android:apk": "cd android && ./gradlew assembleRelease && cd ..",
+    "build:android:bundle": "cd android && ./gradlew bundleRelease && cd ..",
     "postinstall": "npx patch-package",
     "prepare": "husky install"
   },
