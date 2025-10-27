@@ -48,6 +48,13 @@ yarn-error.log
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
+# Credentials and sensitive files
+android/playstore-credential.json
+android/gradle.properties
+firebase-config.json
+*.jks
+*.keystore
+
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
