@@ -96,9 +96,12 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Install Ruby dependencies (Bundler)
-        working-directory: android
-        run: bundle install
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+          working-directory: android
 
       - name: Deploy to Google Play Store
         working-directory: android
