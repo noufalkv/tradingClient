@@ -77,23 +77,33 @@ jobs:
       
       - name: Setup credentials
         env:
-          PLAYSTORE_CREDENTIALS: ${{ secrets.PLAYSTORE_CREDENTIALS }}
           KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
         run: |
-          echo "$PLAYSTORE_CREDENTIALS" > android/playstore-credential.json
+          # Decode and create keystore file
           echo "$KEYSTORE_FILE" | base64 -d > android/app/trading_app_keystore.jks
-          echo "MYAPP_RELEASE_STORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> android/gradle.properties
-          echo "MYAPP_RELEASE_KEY_PASSWORD=${{ secrets.KEYSTORE_KEY_PASSWORD }}" >> android/gradle.properties
-          echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > android/app/my_trading_keystore.jks
+          
+          # Create gradle.properties with signing configuration
+          cat >> android/gradle.properties << 'EOF'
+          MYAPP_RELEASE_STORE_FILE=app/trading_app_keystore.jks
+          MYAPP_RELEASE_STORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
+          MYAPP_RELEASE_KEY_ALIAS=trading_app_key
+          MYAPP_RELEASE_KEY_PASSWORD=${{ secrets.KEYSTORE_KEY_PASSWORD }}
+          EOF
+          
+          # Verify keystore was created successfully
+          ls -la android/app/trading_app_keystore.jks
 
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Install Fastlane
-        run: sudo gem install fastlane -NV
+      - name: Install Ruby dependencies (Bundler)
+        working-directory: android
+        run: bundle install
 
       - name: Deploy to Google Play Store
+        working-directory: android
+        env:
+          PLAYSTORE_CREDENTIALS: ${{ secrets.PLAYSTORE_CREDENTIALS }}
         run: |
-          echo "$GOOGLE_PLAY_SERVICE_ACCOUNT_JSON" > android/fastlane/playstore-credentials.json
-          cd android
-          fastlane playstore
+          echo "$PLAYSTORE_CREDENTIALS" > fastlane/playstore-credentials.json
+          bundle exec fastlane playstore
