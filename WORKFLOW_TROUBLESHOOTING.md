@@ -122,6 +122,35 @@ lane :playstore do  ✅ (no space)
 
 ---
 
+### Error 2b: "bundle: command not found"
+
+**Problem:** Ruby/Bundler not installed in GitHub Actions runner
+
+**Solution:** Add Ruby setup step before using bundler
+
+**In workflow (FIXED):**
+```yaml
+- name: Set up Ruby
+  uses: ruby/setup-ruby@v1
+  with:
+    ruby-version: '3.0'
+    bundler-cache: true
+    working-directory: android
+
+- name: Deploy to Google Play Store
+  working-directory: android
+  run: bundle exec fastlane playstore  ✅
+```
+
+**What it does:**
+- Installs Ruby 3.0
+- Automatically caches and installs gems from Gemfile
+- Prevents "bundle: command not found" error
+
+**Already Fixed**: The workflow has been updated with Ruby setup.
+
+---
+
 ### Error 3: "Could not find playstore-credentials.json"
 
 **Problem:** Credentials file not created
