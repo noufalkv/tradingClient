@@ -33,8 +33,8 @@ read -p "Enter your choice (1-6): " choice
 case $choice in
     1)
         echo -e "\n${YELLOW}Creating new keystore file...${NC}"
-        read -p "Enter keystore file name (default: trading_app_keystore.jks): " keystore_name
-        keystore_name=${keystore_name:-trading_app_keystore.jks}
+        read -p "Enter keystore file name (default: my_trading_keystore.jks): " keystore_name
+        keystore_name=${keystore_name:-my_trading_keystore.jks}
         
         read -p "Enter keystore location (default: ~/): " keystore_path
         keystore_path=${keystore_path:-~/}

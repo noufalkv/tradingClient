@@ -77,17 +77,17 @@ jobs:
       
       - name: Setup credentials
         env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+          KEYSTORE_FILE: ${{ secrets.MYAPP_RELEASE_STORE_FILE }}
         run: |
           # Decode and create keystore file
           echo "$KEYSTORE_FILE" | base64 -d > android/app/trading_app_keystore.jks
           
           # Create gradle.properties with signing configuration
           cat >> android/gradle.properties << 'EOF'
-          MYAPP_RELEASE_STORE_FILE=app/trading_app_keystore.jks
-          MYAPP_RELEASE_STORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
-          MYAPP_RELEASE_KEY_ALIAS=trading_app_key
-          MYAPP_RELEASE_KEY_PASSWORD=${{ secrets.KEYSTORE_KEY_PASSWORD }}
+          MYAPP_RELEASE_STORE_FILE=${{ secrets.MYAPP_RELEASE_STORE_FILE }}
+          MYAPP_RELEASE_STORE_PASSWORD=${{ secrets.MYAPP_RELEASE_STORE_PASSWORD }}
+          MYAPP_RELEASE_KEY_ALIAS=${{ secrets.MYAPP_RELEASE_KEY_ALIAS }}
+          MYAPP_RELEASE_KEY_PASSWORD=${{ secrets.MYAPP_RELEASE_KEY_PASSWORD }}
           EOF
           
           # Verify keystore was created successfully

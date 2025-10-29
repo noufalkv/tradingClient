@@ -88,8 +88,8 @@ android {
         applicationId "com.rn_trading_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "3.0"
     }
     signingConfigs {
         debug {
@@ -99,10 +99,15 @@ android {
             keyPassword '12345678'
         }
          release {
-            storeFile file('my_trading_keystore.jks')
-            storePassword '12345678'
-            keyAlias 'key0'
-            keyPassword '12345678'
+            // storeFile file('my_trading_keystore.jks')
+            // storePassword '12345678'
+            // keyAlias 'key0'
+            // keyPassword '12345678'
+
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
         }
     }
     buildTypes {
