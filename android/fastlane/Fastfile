@@ -35,15 +35,13 @@ platform :android do
     # Build the AAB (Android App Bundle)
     gradle(
       task: "bundle",
-      build_type: "Release",
-      project_dir: "app/"
+      build_type: "Release"
     )
     
     # Upload to Google Play Store
     upload_to_play_store(
-      track: "production",
-      release_status: "completed",
-      json_key: "fastlane/playstore-credentials.json"
+      track: "internal",
+      release_status: "completed"
     )
   end
 
