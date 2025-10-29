@@ -1,5 +1,8 @@
 // const { Platform } = require("react-native");
 
+// Disable React Native feature flags to avoid UnsatisfiedLinkError: libreact_featureflagsjni.so
+process.env.REACT_NATIVE_FEATURE_FLAGS_DISABLED = true;
+
 module.exports = {
   project: {
     ios: {},

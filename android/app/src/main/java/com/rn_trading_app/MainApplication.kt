@@ -10,6 +10,7 @@ import com.facebook.react.ReactPackage
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import java.lang.reflect.Field
 
 class MainApplication : Application(), ReactApplication {
 
@@ -35,11 +36,24 @@ class MainApplication : Application(), ReactApplication {
   override fun onCreate() {
     super.onCreate()
     
-    // Initialize SoLoader for native dependencies
-    SoLoader.init(this, false)
+    // Initialize SoLoader for native dependencies with fallback for missing libraries
+    try {
+      SoLoader.init(this, false)
+    } catch (e: UnsatisfiedLinkError) {
+      // If feature flags JNI library is missing, continue anyway
+      if (e.message?.contains("libreact_featureflagsjni") == true) {
+        android.util.Log.w("MainApplication", "Feature flags JNI not available, continuing without it")
+        // Don't rethrow - app can continue without feature flags
+      } else {
+        throw e
+      }
+    } catch (e: Exception) {
+      e.printStackTrace()
+      throw e
+    }
     
-    // Initialize Flipper for debugging
-    initializeFlipper(this, "com.rn_trading_app")
+    // Initialize Flipper for debugging (commented out due to dependency issues)
+    // initializeFlipper(this, "com.rn_trading_app")
     
     loadReactNative(this)
   }

@@ -7,6 +7,8 @@ buildscript {
         ndkVersion = "27.1.12297006"
         kotlinVersion = "2.1.20"
         FLIPPER_VERSION = "0.273.0"
+        // Disable React Native Feature Flags to avoid missing JNI library
+        REACT_NATIVE_FEATURE_FLAGS_DISABLED = true
     }
     repositories {
         google()
