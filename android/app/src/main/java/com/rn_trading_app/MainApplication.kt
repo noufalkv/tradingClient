@@ -9,6 +9,7 @@ import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactPackage
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
+import com.facebook.soloader.SoLoader
 
 class MainApplication : Application(), ReactApplication {
 
@@ -33,6 +34,31 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
+    
+    // Initialize SoLoader for native dependencies
+    SoLoader.init(this, false)
+    
+    // Initialize Flipper for debugging
+    initializeFlipper(this, reactNativeHost.packageName)
+    
     loadReactNative(this)
+  }
+
+  /**
+   * Loads Flipper in React Native applications. This is a no-op in release builds.
+   */
+  private fun initializeFlipper(app: Application, packageName: String) {
+    try {
+      /*
+       We use reflection here to pick up Flipper, since it's not available in production
+       releases of React Native apps.
+      */
+      val aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper")
+      aClass
+          .getMethod("initializeFlipper", Application::class.java, String::class.java)
+          .invoke(null, app, packageName)
+    } catch (e: Exception) {
+      e.printStackTrace()
+    }
   }
 }
