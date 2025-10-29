@@ -21,20 +21,22 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// Define enhancers for Reactotron integration
+let reactotronEnhancer: any;
 
-// Define enhancers
-const enhancers = [];
 if (__DEV__) {
-  const Reactotron = require('reactotron-react-native')
-    .default as typeof import('reactotron-react-native').default & {
-    createEnhancer?: () => any;
-  };
-  if (Reactotron.createEnhancer) {
-    const reactotronEnhancer = Reactotron.createEnhancer();
-    enhancers.push(reactotronEnhancer);
+  try {
+    const Reactotron = require('reactotron-react-native').default;
+    
+    // Get the Reactotron instance that was configured in reactotronConfig.js
+    if (Reactotron?.createEnhancer) {
+      reactotronEnhancer = Reactotron.createEnhancer();
+      console.log('✅ Reactotron Redux enhancer added');
+    }
+  } catch (err) {
+    console.log('⚠️ Reactotron not available for Redux integration', err);
   }
 }
-
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -44,6 +46,13 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  enhancers: (getDefaultEnhancers) => {
+    const enhancers = getDefaultEnhancers();
+    if (reactotronEnhancer) {
+      enhancers.push(reactotronEnhancer);
+    }
+    return enhancers;
+  },
 });
 
 export const persistor = persistStore(store);

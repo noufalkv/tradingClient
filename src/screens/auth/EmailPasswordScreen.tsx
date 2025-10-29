@@ -19,7 +19,7 @@ import CustomButton from '../../components/global/CustomButton';
 import { EmailLogin } from '../../redux/actions/userAction';
 
 const EmailPasswordScreen = ({ route }: any) => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('SecurePass123!');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();

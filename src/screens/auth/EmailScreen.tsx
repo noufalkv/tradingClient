@@ -12,7 +12,7 @@ import CustomButton from '../../components/global/CustomButton';
 
 const EmailScreen = () => {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('noufalkv@gmail.com');
   const [emailError, setEmailError] = useState('');
   const dispatch = useAppDispatch();
   const validate = () => {

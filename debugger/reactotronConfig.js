@@ -30,7 +30,6 @@ const reactotronConfig = Reactotron.setAsyncStorageHandler(AsyncStorage)
     errors: { veto: (stackFrame) => false },
     overlay: false,
   })
-  // Add custom network monitoring for axios and fetch
   .connect();
 
 export default reactotronConfig;
