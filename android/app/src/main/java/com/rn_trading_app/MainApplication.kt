@@ -39,7 +39,7 @@ class MainApplication : Application(), ReactApplication {
     SoLoader.init(this, false)
     
     // Initialize Flipper for debugging
-    initializeFlipper(this, reactNativeHost.packageName)
+    initializeFlipper(this, "com.rn_trading_app")
     
     loadReactNative(this)
   }
