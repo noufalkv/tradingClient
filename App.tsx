@@ -8,13 +8,20 @@ import { toastConfig } from './ToastConfig';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { IOS_GOOGLE_CLIENT_ID, WEB_CLIENT_ID } from './src/config/env';
 
+// Initialize Reactotron for debugging (dev only)
+if (__DEV__) {
+  require('./debugger/reactotronConfig');
+}
+
 GoogleSignin.configure({
   webClientId: WEB_CLIENT_ID,
   forceCodeForRefreshToken: true,
   offlineAccess: false,
   iosClientId: IOS_GOOGLE_CLIENT_ID,
 });
-
+if (__DEV__) {
+  import('./debugger/reactotronConfig').then(() => {});
+}
 const App = () => {
   return (
     <>
