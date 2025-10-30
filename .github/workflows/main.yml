@@ -113,5 +113,17 @@ jobs:
         env:
           PLAYSTORE_CREDENTIALS: ${{ secrets.PLAYSTORE_CREDENTIALS }}
         run: |
-          echo "$PLAYSTORE_CREDENTIALS" > fastlane/playstore-credentials.json
+          # Decode base64-encoded Play Store credentials
+          echo "$PLAYSTORE_CREDENTIALS" | base64 -d > fastlane/playstore-credentials.json
+          
+          # Verify the credentials file was created successfully
+          if [ -f fastlane/playstore-credentials.json ]; then
+            echo "✅ Play Store credentials file created successfully"
+            ls -lh fastlane/playstore-credentials.json
+          else
+            echo "❌ Failed to create Play Store credentials file"
+            exit 1
+          fi
+          
+          # Run fastlane deployment
           bundle exec fastlane playstore
