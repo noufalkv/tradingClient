@@ -33,21 +33,26 @@ platform :android do
   desc "Build and deploy to Google Play Store"
   lane :playstore do
     # Build the AAB (Android App Bundle)
-    gradle(
-      task: "bundle",
-      build_type: "Release"
-    )
+    # gradle(
+    #   task: "bundle",
+    #   build_type: "Release"
+    # )
+    gradle(task: "clean bundleRelease")
     
     # Upload to Google Play Store
+    # upload_to_play_store(
+    #   track: "internal",
+    #   release_status: "draft"
+    # )
     upload_to_play_store(
-      track: "internal",
-      release_status: "completed"
+        track: 'internal',
+        release_status: 'completed'
     )
   end
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "clean bundleRelease")
     upload_to_play_store
   end
 end
