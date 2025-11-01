@@ -2,7 +2,13 @@ import axios from 'axios';
 import { navigate, resetAndNavigate } from '../../utils/NavigationUtil';
 import { appAxios } from '../apiConfig';
 import { setUser } from '../reducers/userSlice';
-import { CHECK_EMAIL, EMAIL_LOGIN, SEND_OTP, VERIFY_OTP } from '../API';
+import {
+  CHECK_EMAIL,
+  EMAIL_LOGIN,
+  REGISTER,
+  SEND_OTP,
+  VERIFY_OTP,
+} from '../API';
 import Toast from 'react-native-toast-message';
 import { token_storage } from '../storage';
 import { Alert } from 'react-native';
@@ -35,11 +41,15 @@ interface CheckEmail {
 
 export const CheckEmail = (data: CheckEmail) => async (dispatch: any) => {
   try {
+    console.log('CHECK_EMAILCHECK_EMAIL', CHECK_EMAIL);
+
     const res = await axios.post(CHECK_EMAIL, data);
     console.log('CHECK EMAIL-->', res.data);
     let path = res.data.isExist ? 'EmailPasswordScreen' : 'EmailOtpScreen';
     navigate(path, { email: data.email });
   } catch (error) {
+    console.log('error', error);
+
     Toast.show({
       type: 'warningToast',
       props: {
@@ -47,6 +57,42 @@ export const CheckEmail = (data: CheckEmail) => async (dispatch: any) => {
       },
     });
     console.log('CHECK EMAIL ERROR-->', error);
+  }
+};
+
+// REGISTER
+
+interface Register {
+  email: string;
+  password: string;
+  register_token: string;
+}
+
+export const RegisterUser = (data: Register) => async (dispatch: any) => {
+  try {
+    const res = await axios.post(REGISTER, data);
+    console.log('REGISTER USER-->', res.data);
+    token_storage.set('app_access_token', res.data.tokens.access_token);
+    token_storage.set('app_refresh_token', res.data.tokens.refresh_token);
+    await dispatch(setUser(res.data.user));
+    const { userId, email, login_pin_exist, phone_exist, name } = res.data.user;
+    if (!phone_exist) {
+      resetAndNavigate('PhoneScreen');
+    } else if (!name) {
+      resetAndNavigate('PersonalDetailScreen');
+    } else if (!login_pin_exist) {
+      resetAndNavigate('PinScreen');
+    } else {
+      resetAndNavigate('AuthVerificationScreen');
+    }
+  } catch (error: any) {
+    Toast.show({
+      type: 'normalToast',
+      props: {
+        msg: error?.response?.data?.msg,
+      },
+    });
+    console.log('EMAIL LOGIN ERROR-->', error);
   }
 };
 
