@@ -10,6 +10,7 @@ import PersonalDetailScreen from '../screens/auth/PersonalDetailScreen';
 import PhoneScreen from '../screens/auth/PhoneScreen';
 import PinScreen from '../screens/auth/PinScreen';
 import ProfileScreen from '../screens/auth/ProfileScreen';
+import RegisterScreen from '../screens/auth/RegisterScreen';
 import SplashScreen from '../screens/onboarding/SplashScreen';
 import Stock from '../screens/stock/Stock';
 import TradingView from '../screens/stock/TradingView';
@@ -29,6 +30,11 @@ export const authStacks = [
     name: 'EmailScreen',
     component: EmailScreen,
   },
+  {
+    name: 'RegisterScreen',
+    component: RegisterScreen,
+  },
+
   {
     name: 'PhoneScreen',
     component: PhoneScreen,
